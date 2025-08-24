@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Netflix-style FAQ Accordion</title>
+  <style>
+    :root{
+      --bg:#000;
+      --card:#222;
+      --card-hover:#2b2b2b;
+      --text:#fff;
+      --muted:#b3b3b3;
+      --divider:#111;
+      --radius:12px;
+    }
+    /* Page */
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height:1.5;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 64px auto;
+      padding: 0 20px;
+    }
+    h1{
+      font-weight:800;
+      letter-spacing:.2px;
+      margin:0 0 18px;
+      font-size: clamp(26px, 3.5vw, 40px);
+    }
+    .sub{
+      margin:0 0 24px;
+      color: var(--muted);
+      font-size: clamp(14px, 2.3vw, 16px);
+    }
+
+    /* Accordion */
+    .accordion{
+      display:grid;
+      gap:8px;
+    }
+    .item{
+      background: var(--card);
+      border-radius: 0;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+    }
+    .item:has(.trigger:hover){ background: var(--card-hover); }
+
+    .trigger{
+      width:100%;
+      text-align:left;
+      padding: 20px 56px 20px 24px;
+      font-size: clamp(16px, 2.6vw, 20px);
+      color: var(--text);
+      background: transparent;
+      border:0;
+      cursor:pointer;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+    }
+    .trigger:focus-visible{
+      outline: 2px solid #888;
+      outline-offset: 2px;
+      border-radius: var(--radius);
+    }
+    /* plus icon */
+    .trigger::after{
+      content:"+";
+      font-size: 28px;
+      line-height:1;
+      width: 28px;
+      text-align:center;
+      position:absolute;
+      right: 18px;
+      top:50%;
+      translate: 0 -50%;
+      transition: transform .25s ease;
+    }
+    .trigger[aria-expanded="true"]::after{
+      content:"\2212"; /* minus */
+      transform: rotate(180deg);
+    }
+
+    .panel{
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      border-top:1px solid #000;
+      background: #1a1a1a;
+    }
+    .panel-inner{
+      padding: 18px 24px 22px;
+      color: var(--muted);
+      font-size: clamp(15px, 2.3vw, 18px);
+    }
+
+    /* Small screens spacing */
+    @media (max-width:480px){
+      .trigger{ padding-right: 50px; }
+      .trigger::after{ right: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Frequently Asked Questions</h1>
+    <p class="sub">Neeche diye gaye sawalon par click karke answer dekh sakte ho.</p>
+
+    <section class="accordion" id="faq">
+      <!-- 1 -->
+      <article class="item">
+        <button class="trigger" aria-expanded="false" aria-controls="p1" id="t1">
+          What is Netflix?
+        </button>
+        <div class="panel" id="p1" role="region" aria-labelledby="t1">
+          <div class="panel-inner">
+            Netflix ek streaming service hai jisme movies, series, documentaries aur aur bhi bahut kuch milta hai—phone, laptop, TV sab par.
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="item">
+        <button class="trigger" aria-expanded="false" aria-controls="p2" id="t2">
+          How much does Netflix cost?
+        </button>
+        <div class="panel" id="p2" role="region" aria-labelledby="t2">
+          <div class="panel-inner">
+            Plans location ke hisaab se alag hote hain. Aap monthly subscription choose kar sakte ho aur kabhi bhi cancel kar sakte ho.
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="item">
+        <button class="trigger" aria-expanded="false" aria-controls="p3" id="t3">
+          Where can I watch?
+        </button>
+        <div class="panel" id="p3" role="region" aria-labelledby="t3">
+          <div class="panel-inner">
+            Android/iOS apps, smart TV apps, set-top boxes, gaming consoles aur web browser—har jagah stream kar sakte ho.
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="item">
+        <button class="trigger" aria-expanded="false" aria-controls="p4" id="t4">
+          How do I cancel?
+        </button>
+        <div class="panel" id="p4" role="region" aria-labelledby="t4">
+          <div class="panel-inner">
+            Account settings me jaakar membership cancel kar sakte ho—auto-renew turant band ho jaayega, billing cycle tak access milta rahega.
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="item">
+        <button class="trigger" aria-expanded="false" aria-controls="p5" id="t5">
+          What can I watch on Netflix?
+        </button>
+        <div class="panel" id="p5" role="region" aria-labelledby="t5">
+          <div class="panel-inner">
+            Latest movies, trending web-series, anime, kids content, regional shows—har category ka bada library.
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="item">
+        <button class="trigger" aria-expanded="false" aria-controls="p6" id="t6">
+          Is Netflix good for kids?
+        </button>
+        <div class="panel" id="p6" role="region" aria-labelledby="t6">
+          <div class="panel-inner">
+            Haan, Kids profile ke saath parental controls, maturity ratings, aur viewing restrictions milte hain.
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    // Helper: collapse all except current (optional)
+    const triggers = document.querySelectorAll('.trigger');
+
+    function setPanelHeight(panel, expanded) {
+      if (expanded) {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      } else {
+        panel.style.maxHeight = 0;
+      }
+    }
+
+    // Initialize (in case of SSR or refresh)
+    document.querySelectorAll('.panel').forEach(p => setPanelHeight(p, false));
+
+    triggers.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+
+        // close others (accordion behavior)
+        triggers.forEach(other => {
+          if (other !== btn) {
+            other.setAttribute('aria-expanded', 'false');
+            const op = document.getElementById(other.getAttribute('aria-controls'));
+            setPanelHeight(op, false);
+          }
+        });
+
+        // toggle current
+        btn.setAttribute('aria-expanded', String(!expanded));
+        setPanelHeight(panel, !expanded);
+      });
+
+      // Keyboard arrow navigation
+      btn.addEventListener('keydown', (e) => {
+        if (!['ArrowUp','ArrowDown','Home','End'].includes(e.key)) return;
+        e.preventDefault();
+        const list = Array.from(triggers);
+        const i = list.indexOf(btn);
+        let target = btn;
+        if (e.key === 'ArrowDown') target = list[(i+1) % list.length];
+        if (e.key === 'ArrowUp')   target = list[(i-1+list.length) % list.length];
+        if (e.key === 'Home')      target = list[0];
+        if (e.key === 'End')       target = list[list.length-1];
+        target.focus();
+      });
+    });
+
+    // Resize fix so open panel follows content height changes
+    new ResizeObserver(() => {
+      document.querySelectorAll('.trigger[aria-expanded="true"]').forEach(b=>{
+        const p = document.getElementById(b.getAttribute('aria-controls'));
+        setPanelHeight(p, true);
+      });
+    }).observe(document.body);
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <form>
+        <h2>Login in form</h2>
+        <details>
+            <summary>Read a bit more about login</summary>
+            <p>
+                "Logging in allows us to provide you with a personalized and secure experience. By creating an account,
+                your preferences, progress, and data are saved safely, so you can access them anytime from any device.
+                It also helps us protect your privacy, prevent unauthorized access, and offer features like
+                recommendations, saved history, and faster support. Without logging in, these benefits would not be
+                possible."
+            </p>
+        </details> <br>
+        <label for="Username">Username:</label>
+        <input placeholder="Username" type="text" required> <br>
+
+        <label for="Password">Password:</label required>
+        <input placeholder="Password" type="Password"> <br>
+
+        <label for="tel">Phone </label>
+        <input type="number" placeholder="mobile number" id="tel" pattern="[0-9]{10}" <br>
+
+        <div>
+            <h3>Select your class</h3>
+             <label for="101">
+            <input type="radio" value="Class 10th" name="class" id="101" required>Class 10th <br>
+           </label>
+
+            <label for="102">
+                <input type="radio" value="Class 12th" name="class" id="102" required>Class 12th <br>
+            </label>
+            <label for="103">
+                <input type="radio" value="Other" name="class" id="103" required>Other <br>
+            </label> <!--here name is same so we can only select one option -->
+        </div>
+
+        <!-- if we click on class 10th then it will select 10 bcoz of label tag -->
+        <br>
+        <h3>Select your fav. subject</h3>
+        <label for="202">
+            <input type="checkbox" id="202" name="physics"> Physics <br>
+        </label>
+
+        <label for="203">
+            <input type="checkbox" id="203" name="Chemistry"> Chemistry <br>
+        </label>
+
+
+        <label for="204">
+            <input type="checkbox" id="204" name="Maths"> Maths <br>
+        </label>
+
+        <label for="205">
+            <input type="checkbox" id="205" name="Hindi"> Hindi<br>
+        </label>
+
+        <label for="206">
+            <input type="checkbox" id="206" name="English"> English <br>
+        </label><br>
+
+        <br>
+        <h3>Select your state from below</h3>
+
+        <label for="state"></label>
+        <select id="state" required>
+            <option value="" disabled selected>Select your state</option>
+            <option value="J&K">J&K</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Tamilnadu">Tamilnadu</option>
+            <option value="Other">Other</option>
+
+        </select> <br>
+
+
+
+    </form>
+    <br>
+    <h3>Give your feedback</h3>
+    <textarea placeholder="Send your valuable feedback" rows="5" id="401" name="Feedback"></textarea><br>
+
+
+    <input type="submit" value="Submit">
+    <button type="reset">Clear</button>
+
+</body>
+
+</html>
